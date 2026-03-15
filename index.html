@@ -999,6 +999,113 @@
       transition-delay: 0.4s;
     }
 
+    /* ── MODAL ── */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background: var(--cream);
+      margin: 10% auto;
+      padding: 30px;
+      border: 2px solid var(--gold-dark);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .close {
+      color: var(--crimson);
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: var(--crimson-deep);
+    }
+
+    .modal h2 {
+      color: var(--crimson-deep);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .modal form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal label {
+      margin-top: 10px;
+      font-weight: 700;
+      color: var(--crimson);
+    }
+
+    .modal input, .modal select, .modal textarea {
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid var(--gold-dark);
+      border-radius: 5px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .modal textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .modal button {
+      margin-top: 20px;
+      align-self: center;
+    }
+
+    /* ── FLOATING ORDER BUTTON ── */
+    .floating-order {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 500;
+    }
+
+    .floating-order .btn {
+      box-shadow: 0 4px 20px rgba(232, 201, 122, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* ── FLYING DRAGON ── */
+    .flying-dragon {
+      position: absolute;
+      top: 20%;
+      left: -10%;
+      animation: flyDragon 8s linear infinite;
+      z-index: 10;
+    }
+
+    @keyframes flyDragon {
+      0% { transform: translateX(-100px) translateY(0) rotate(0deg); }
+      25% { transform: translateX(50vw) translateY(-20px) rotate(5deg); }
+      50% { transform: translateX(100vw) translateY(10px) rotate(-5deg); }
+      75% { transform: translateX(150vw) translateY(-10px) rotate(3deg); }
+      100% { transform: translateX(200vw) translateY(0) rotate(0deg); }
+    }
+
     /* ── RESPONSIVE ── */
     @media(max-width:768px) {
       .nav {
@@ -1162,6 +1269,17 @@
       Scroll
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M12 5v14M5 12l7 7 7-7" />
+      </svg>
+    </div>
+
+    <!-- Flying Dragon -->
+    <div class="flying-dragon">
+      <svg width="60" height="40" viewBox="0 0 60 40" fill="none">
+        <path d="M10 20 Q15 10 25 15 Q35 5 45 10 Q50 15 55 20 Q50 25 45 30 Q35 35 25 25 Q15 30 10 20Z" fill="#E07030" opacity="0.8"/>
+        <circle cx="15" cy="18" r="2" fill="#E8C97A"/>
+        <path d="M45 10 Q50 8 52 12 Q50 16 45 14Z" fill="#C94040"/>
+        <path d="M47 18 Q52 16 54 20 Q52 24 47 22Z" fill="#C94040"/>
+        <path d="M5 20 L10 18 L10 22 Z" fill="#8B1A1A"/>
       </svg>
     </div>
   </section>
@@ -1351,7 +1469,7 @@
             <div class="card-name">Chilli Paneer</div>
           </div>
           <div class="card-body">
-            <div class="price-row"><span class="price-label">Price</span><span class="price-tag muted">Ask Us</span>
+            <div class="price-row"><span class="price-label">Price</span><span class="price-tag">₹160</span>
             </div>
           </div>
         </div>
@@ -1361,7 +1479,7 @@
             <div class="card-name">Chilli Chicken</div>
           </div>
           <div class="card-body">
-            <div class="price-row"><span class="price-label">Price</span><span class="price-tag muted">Ask Us</span>
+            <div class="price-row"><span class="price-label">Price</span><span class="price-tag">₹170</span>
             </div>
           </div>
         </div>
@@ -1377,17 +1495,8 @@
             <div class="card-name">Chicken Roll</div>
           </div>
           <div class="card-body">
-            <div class="price-row"><span class="price-label">Price</span><span class="price-tag muted">Ask Us</span>
+            <div class="price-row"><span class="price-label">Price</span><span class="price-tag">₹90</span>
             </div>
-          </div>
-        </div>
-        <div class="menu-card reveal delay-2">
-          <div class="diet-dot veg"></div>
-          <div class="card-top"><span class="card-emoji">🌯</span>
-            <div class="card-name">Paneer Roll</div>
-          </div>
-          <div class="card-body">
-            <div class="price-row"><span class="price-label">Price</span><span class="price-tag muted">Ask Us</span>
             </div>
           </div>
         </div>
@@ -1397,26 +1506,13 @@
             <div class="card-name">Veg Roll</div>
           </div>
           <div class="card-body">
-            <div class="price-row"><span class="price-label">Price</span><span class="price-tag muted">Ask Us</span>
-            </div>
-          </div>
-        </div>
-        <div class="menu-card reveal delay-4">
-          <div class="diet-dot nonveg"></div>
-          <div class="card-top"><span class="card-emoji">🌯</span>
-            <div class="card-name">Egg Roll</div>
+            <div class="price-row"><span class="price-label">Price</span><span class="price-tag">₹75</span>
           </div>
           <div class="card-body">
-            <div class="price-row"><span class="price-label">Price</span><span class="price-tag muted">Ask Us</span>
-            </div>
-          </div>
-        </div>
-        <div class="menu-card reveal delay-2">
-          <div class="card-top special"><span class="card-emoji">⭐</span>
-            <div class="card-name">Dahi Ke Sholay</div><span class="card-special-badge">Must Try</span>
+            <div class="price-row"><span class="price-label">Price</span><span class="price-tag">₹80</span>
           </div>
           <div class="card-body">
-            <div class="price-row"><span class="price-label">Special</span><span class="price-tag muted">Ask Us</span>
+            <div class="price-row"><span class="price-label">Special</span><span class="price-tag">₹95</span>
             </div>
             <div class="price-note">✦ Crowd Favourite</div>
           </div>
@@ -1433,7 +1529,7 @@
             <div class="card-name">Chicken Fried Rice</div>
           </div>
           <div class="card-body">
-            <div class="price-row"><span class="price-label">Price</span><span class="price-tag muted">Ask Us</span>
+            <div class="price-row"><span class="price-label">Price</span><span class="price-tag">₹120</span>
             </div>
           </div>
         </div>
@@ -1443,7 +1539,7 @@
             <div class="card-name">Paneer Fried Rice</div>
           </div>
           <div class="card-body">
-            <div class="price-row"><span class="price-label">Price</span><span class="price-tag muted">Ask Us</span>
+            <div class="price-row"><span class="price-label">Price</span><span class="price-tag">₹115</span>
             </div>
           </div>
         </div>
@@ -1453,7 +1549,7 @@
             <div class="card-name">Veg Fried Rice</div>
           </div>
           <div class="card-body">
-            <div class="price-row"><span class="price-label">Price</span><span class="price-tag muted">Ask Us</span>
+            <div class="price-row"><span class="price-label">Price</span><span class="price-tag">₹100</span>
             </div>
           </div>
         </div>
@@ -1552,6 +1648,46 @@
     </div>
   </section>
 
+  <!-- ORDER MODAL -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Order from Chinese Paglu</h2>
+      <form id="orderForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        <label for="item">Select Item:</label>
+        <select id="item" name="item" required>
+          <option value="">Choose...</option>
+          <option value="Chicken Momo">Chicken Momo</option>
+          <option value="Paneer Momo">Paneer Momo</option>
+          <option value="Kurkure Momo">Kurkure Momo</option>
+          <option value="Chicken Noodles">Chicken Noodles</option>
+          <option value="French Fries">French Fries</option>
+          <option value="Chilli Potato">Chilli Potato</option>
+          <option value="Dahi Ke Sholay">Dahi Ke Sholay</option>
+        </select>
+        
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+        
+        <label for="notes">Special Notes:</label>
+        <textarea id="notes" name="notes"></textarea>
+        
+        <button type="submit" class="btn btn-gold">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOATING ORDER BUTTON -->
+  <div class="floating-order">
+    <button id="orderBtn" class="btn btn-gold">🍜 Order Now</button>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">🏮 Chinese Paglu 🏮</div>
@@ -1582,6 +1718,33 @@
         setTimeout(() => el.classList.add('visible'), 200 + i * 100);
       });
     }, 700);
+
+    // Modal functionality
+    const modal = document.getElementById('orderModal');
+    const orderBtn = document.getElementById('orderBtn');
+    const closeBtn = document.querySelector('.close');
+
+    orderBtn.onclick = function() {
+      modal.style.display = 'block';
+    }
+
+    closeBtn.onclick = function() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    // Form submission
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your order! We will contact you soon.');
+      modal.style.display = 'none';
+      this.reset();
+    });
   </script>
 </body>
 
